@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import {
   FaFacebookF,
@@ -10,45 +10,71 @@ import {
   FaLinkedinIn,
 } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+import { Menu, X } from "lucide-react";
 
 const HomePage = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="min-h-screen bg-[#070B1D] text-white relative overflow-hidden">
       {/* Navigation */}
       <nav className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <div className="flex items-center">
-          <img
-            src="/GenScriptAI 500Px.png"
-            alt="GenScript AI Logo"
-            className="w-10 h-10"
-          />
-          <span className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
-            GENSCRIPT AI
-          </span>
-        </div>
+      {/* Logo */}
+      <div className="flex items-center">
+        <img src="/GenScriptAI 500Px.png" alt="GenScript AI Logo" className="w-10 h-10" />
+        <span className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
+          GENSCRIPT AI
+        </span>
+      </div>
 
-        <div className="flex items-center gap-4">
-          <div className="text-gray-400 flex items-center gap-2">
-            NOT YET GENSCRIPTED?
-            <span role="img" aria-label="thinking">
-              🤔
-            </span>
-            <span role="img" aria-label="worried">
-              🤨
-            </span>
-          </div>
-          <button 
-  suppressHydrationWarning={true}
-  className="bg-[#1A1F35] text-white px-6 py-2 rounded-lg hover:bg-[#252B45] transition-colors"
->
-  Sign Up
-</button>
+      {/* Desktop Content */}
+      <div className="hidden md:flex items-center gap-4">
+        <div className="text-gray-400 flex items-center gap-2">
+          NOT YET GENSCRIPTED?
+          <span role="img" aria-label="thinking">🤔</span>
+          <span role="img" aria-label="worried">🤨</span>
         </div>
-      </nav>
+        <a 
+  href="https://docs.google.com/forms/d/e/1FAIpQLSfbSfq7-mfasSMobP6NKp0o4sN5fpqGs0tl1imqB0KpUTS6iA/viewform?usp=header" 
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+        <button 
+          suppressHydrationWarning={true}
+          className="bg-[#1A1F35] text-white px-6 py-2 rounded-lg hover:bg-[#252B45] transition-colors"
+        >
+          Sign Up
+        </button>
+        </a>
+      </div>
+
+      {/* Mobile Menu Button */}
+      <button 
+      suppressHydrationWarning={true}
+      onClick={() => setIsOpen(!isOpen)} className="md:hidden text-white" aria-label="Toggle Menu">
+        {isOpen ? <X size={28} /> : <Menu size={28} />}
+      </button>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="absolute top-16 right-4 bg-[#1A1F35] text-white p-4 rounded-lg shadow-lg z-50 md:hidden w-40">
+          <a 
+  href="https://docs.google.com/forms/d/e/1FAIpQLSfbSfq7-mfasSMobP6NKp0o4sN5fpqGs0tl1imqB0KpUTS6iA/viewform?usp=header" 
+  target="_blank" 
+  rel="noopener noreferrer">
+          <button 
+            suppressHydrationWarning={true}
+            className="w-full bg-[#252B45] px-4 py-2 rounded-lg hover:bg-[#2F3659] transition-colors"
+          >
+            Sign Up
+          </button>
+          </a>
+        </div>
+      )}
+    </nav>
 
       {/* Main Content */}
       <main className="container mx-auto px-4 text-center mt-32 relative z-10">
-        <h1 className="text-6xl font-bold leading-tight max-w-5xl mx-auto mb-8">
+        <h1 className="text-4xl  sm:text-5xl md:text-6xl  font-bold leading-tight max-w-5xl mx-auto mb-8">
           Transforming the ideas to success in Media & Entertainment Industry
         </h1>
 
@@ -62,10 +88,16 @@ const HomePage = () => {
           Just signup and explore !
         </p>
 
-        <button className="bg-[#4169E1] text-white px-8 py-3 rounded-lg text-lg flex items-center gap-2 mx-auto hover:bg-blue-600 transition-colors">
+        <a 
+  href="https://docs.google.com/forms/d/e/1FAIpQLSfbSfq7-mfasSMobP6NKp0o4sN5fpqGs0tl1imqB0KpUTS6iA/viewform?usp=header" 
+  target="_blank" 
+  rel="noopener noreferrer">
+        <button 
+         suppressHydrationWarning={true}
+        className="bg-[#4169E1] text-white px-8 py-3 rounded-lg text-lg flex items-center gap-2 mx-auto hover:bg-blue-600 transition-colors">
           Sign Up Today ! <ArrowUpRight className="w-5 h-5" />
         </button>
-
+</a>
         <div className="mt-32 text-2xl text-gray-300">
           Trusted by 250+ Industry Experts (Beta Product)
         </div>
@@ -73,33 +105,44 @@ const HomePage = () => {
 
       {/* ChatGPT Comparison Section */}
       <section className="mt-32 container mx-auto px-4 relative z-10">
-        <div className="bg-[#0A0F25] rounded-3xl p-16 text-center">
+        <div className="bg-[#0A0F25] rounded-3xl p-12 text-center">
           <h2 className="text-6xl font-bold mb-4">How we differ from ChatGPT</h2>
           <p className="text-xl text-gray-400">(Beta Version)</p>
-          <button className="mt-8 bg-[#1A1F35] text-white px-6 py-2 rounded-lg hover:bg-[#252B45] transition-colors">
+          <a 
+  href="https://docs.google.com/forms/d/e/1FAIpQLSfbSfq7-mfasSMobP6NKp0o4sN5fpqGs0tl1imqB0KpUTS6iA/viewform?usp=header" 
+  target="_blank" 
+  rel="noopener noreferrer">
+          <button 
+           suppressHydrationWarning={true}
+          className="mt-8 bg-[#1A1F35] text-white px-6 py-2 rounded-lg hover:bg-[#252B45] transition-colors">
             Sign Up
           </button>
+          </a>
         </div>
       </section>
 
       {/* Partners Section */}
-      <section className="mt-32 container mx-auto px-4 pb-32 relative z-10">
-        <h3 className="text-4xl text-gray-400 text-center mb-16">We're part of</h3>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-16 items-center justify-items-center">
-          {[
-            { src: "/elevenlabs.png", name: "ElevenLabGrant" },
-            { src: "/langchain2.png", name: "LangChain" },
-            { src: "/aws.png", name: "AWS Startups" },
-            { src: "/microsoft.png", name: "Microsoft for Startups" },
-            { src: "/nvidia.png", name: "NVIDIA Inception Program" }
-          ].map(({ src, name }) => (
-            <div key={name} className="flex items-center gap-2">
-              <img src={src} alt={name} className="w-10 h-10" />
-              <span className="text-2xl">{name}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+      <section className="mt-16 sm:mt-24 md:mt-32 container mx-auto px-4 pb-16 sm:pb-24 md:pb-32 relative z-10">
+  <h3 className="text-2xl sm:text-3xl md:text-4xl text-gray-400 text-center mb-10 sm:mb-12 md:mb-16">
+    We're part of
+  </h3>
+
+  <div className="flex flex-wrap justify-center gap-6 sm:gap-10 md:gap-16">
+    {[
+      { src: "/elevenlabs.png", name: "ElevenLabGrant" },
+      { src: "/langchain2.png", name: "LangChain" },
+      { src: "/aws.png", name: "AWS Startups" },
+      { src: "/microsoft.png", name: "Microsoft for Startups" },
+      { src: "/nvidia.png", name: "NVIDIA Inception Program" }
+    ].map(({ src, name }) => (
+      <div key={name} className="flex items-center gap-3 sm:gap-4">
+        <img src={src} alt={name} className="w-8 h-8 sm:w-10 sm:h-10" />
+        <span className="text-lg sm:text-xl md:text-2xl">{name}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
 
       {/* Background Effects */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full filter blur-[150px] opacity-20"></div>
@@ -251,11 +294,28 @@ const HomePage = () => {
             {/* Social Icons */}
             <div className="flex items-center gap-5 text-white text-lg">
               <FaFacebookF className="hover:text-blue-500 cursor-pointer" />
+              <a href=" https://pin.it/41LwfeIaf" target="_blank" rel="noopener noreferrer">
               <FaPinterestP className="hover:text-red-500 cursor-pointer" />
+              </a>
+              <a href="https://www.youtube.com/@GenscriptAI" target="_blank" rel="noopener noreferrer">
               <FaYoutube className="hover:text-red-600 cursor-pointer" />
+              </a>
+              <a href="https://www.producthunt.com/products/gensciptai" target="_blank" rel="noopener noreferrer">
+    <img 
+      src="/product_hunt.png" 
+      alt="Product Hunt" 
+      className="w-6 h-6 hover:opacity-80 cursor-pointer" 
+    />
+  </a>
+
+              <a href="https://x.com/GenscriptA28862?s=08" target="_blank" rel="noopener noreferrer">
               <FaXTwitter className="hover:text-gray-300 cursor-pointer" />
+              </a>
               <FaInstagram className="hover:text-pink-400 cursor-pointer" />
-              <FaLinkedinIn className="hover:text-blue-400 cursor-pointer" />
+              <a href="https://www.linkedin.com/company/genscript-ai/" target="_blank" rel="noopener noreferrer">
+        <FaLinkedinIn className="hover:text-blue-400 cursor-pointer" />
+      </a>
+      
             </div>
           </div>
         </div>
