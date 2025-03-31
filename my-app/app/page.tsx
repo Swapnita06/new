@@ -247,7 +247,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      <footer className="bg-[#0C0C24] text-white px-6 lg:px-20 py-10 font-sans">
+      <footer className="bg-[#0C0C24] text-white px-4 sm:px-6 lg:px-20 py-10 font-sans overflow-x-hidden">
         <div className="max-w-7xl mx-auto">
           {/* Top Section */}
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-gray-700 pb-6">
@@ -292,9 +292,9 @@ const HomePage = () => {
             </div>
 
             {/* Social Icons */}
-            <div className="flex items-center gap-5 text-white text-lg">
+            <div className="flex items-center gap-5 text-white text-lg relative z-50 pointer-events-auto">
               <FaFacebookF className="hover:text-blue-500 cursor-pointer" />
-              <a href=" https://pin.it/41LwfeIaf" target="_blank" rel="noopener noreferrer">
+              <a href="https://pin.it/41LwfeIaf" target="_blank" rel="noopener noreferrer">
               <FaPinterestP className="hover:text-red-500 cursor-pointer" />
               </a>
               <a href="https://www.youtube.com/@GenscriptAI" target="_blank" rel="noopener noreferrer">
